@@ -18,10 +18,17 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
 
-        /*this.state = {
+        this.state = {
             username: '',
-            password: ''
-        }*/
+            password: '',
+            isTeacher: true
+        }
+/*
+        fetch('api/authenticate/')
+        .then(response => response.json())
+        .then(data => {
+            this.setState({ isTeacher: data });
+        });*/
 
         this.handleClose = this.handleClose.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,7 +38,7 @@ class Login extends React.Component {
 
     handleClose() {
         this.props.history.push({
-            pathname: '/home'
+            pathname: this.state.isTeacher ? '/homeTeacher' : '/homeStudent'
         });
     }
 
@@ -79,7 +86,6 @@ class Login extends React.Component {
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" onClick={ this.handleClose }>Close</button>
                             <button type="submit" className="btn btn-primary btn-block">Login</button>
                         </div>
                     </div>
