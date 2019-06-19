@@ -9,10 +9,11 @@ import registerServiceWorker from './registerServiceWorker';
 
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const rootElement = document.getElementById('root');
+const isTeacher = true;
 
 ReactDOM.render(
   <BrowserRouter basename={baseUrl}>
-    <App />
+    <App isTeacher = {isTeacher}/>
   </BrowserRouter>,
   rootElement);
 

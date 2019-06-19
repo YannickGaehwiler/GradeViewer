@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 import { NavMenu } from './NavMenu';
 
-export class Layout extends Component {
+export class Layout extends Component{
   displayName = Layout.name
-
+  constructor(props) {
+    super(props);
+ }
   render() {
     return (
       <Grid fluid>
         <Row>
           <Col sm={3}>
-            <NavMenu />
+            <NavMenu isTeacher = {this.props.isTeacher}/>
           </Col>
           <Col sm={9}>
             {this.props.children}
