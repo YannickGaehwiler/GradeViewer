@@ -1,18 +1,5 @@
 import * as React from 'react';
-import { History } from 'history';
 import { withRouter } from "react-router";
-
-//import { AppContext } from '../model/appContext';
-
-/*type LoginPopupProps = {
-    //context : AppContext
-    history : History
-}
-
-type LoginPopupState = {
-    username : string,
-    password : string
-}*/
 
 class Login extends React.Component {
     constructor(props) {
@@ -20,8 +7,7 @@ class Login extends React.Component {
 
         this.state = {
             username: '',
-            password: '',
-            isTeacher: true
+            password: ''
         }
 /*
         fetch('api/authenticate/')
@@ -36,9 +22,19 @@ class Login extends React.Component {
         this.handleOnChangeUsername = this.handleOnChangeUsername.bind(this);
     }
 
+    /*componentDidMount(){
+        if(!this.state.isAuthenticated){
+            this.props.history.push({
+                pathname: '/login'
+            });
+        }else{
+            this.handleClose();
+        }
+    }*/
+
     handleClose() {
         this.props.history.push({
-            pathname: this.state.isTeacher ? '/homeTeacher' : '/homeStudent'
+            pathname: this.props.isAuthenticated ? '/home' : '/login'
         });
     }
 

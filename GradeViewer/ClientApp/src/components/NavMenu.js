@@ -11,6 +11,7 @@ class NavMenuInternal extends React.Component {
     super(props);
 
     this.handleClose = this.handleClose.bind(this);
+
  }
 
  handleClose() {
@@ -20,27 +21,17 @@ class NavMenuInternal extends React.Component {
 }
 
   render() {
+
     var linkContainerGrades;
     var linkContainerClasses;
-    var home;
 
     if(this.props.isTeacher){
-      home = <LinkContainer to={'/homeTeacher'} exact>
-              <NavItem>
-                <Glyphicon glyph='home' /> Home
-              </NavItem>
-            </LinkContainer>; 
       linkContainerClasses = <LinkContainer to={'/classes'}>
                               <NavItem>
                                 <Glyphicon glyph='education' /> Counter
                               </NavItem>
                             </LinkContainer>;
     }else{
-      home = <LinkContainer to={'/homeStudent'} exact>
-              <NavItem>
-                <Glyphicon glyph='home' /> Home
-              </NavItem>
-            </LinkContainer>;
       linkContainerGrades = <LinkContainer to={'/grades'}>
                               <NavItem>
                                 <Glyphicon glyph='th-list' /> My grades
@@ -51,13 +42,17 @@ class NavMenuInternal extends React.Component {
       <Navbar inverse fixedTop fluid collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to={this.props.isTeacher ? '/homeTeacher' : '/homeStudent'}>GradeViewer</Link>
+            <Link to='/home'>GradeViewer</Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            {home}
+            <LinkContainer to={'/home'} exact>
+              <NavItem>
+                <Glyphicon glyph='home' /> Home
+              </NavItem>
+            </LinkContainer>
             {linkContainerClasses}
             {linkContainerGrades}         
           </Nav>
